@@ -10,5 +10,6 @@ namespace GenericRepository.Data
 
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

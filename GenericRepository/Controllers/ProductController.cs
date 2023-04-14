@@ -7,10 +7,10 @@ namespace GenericRepository.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private IGenericRepository<User> repository = null;
-        public UserController(IGenericRepository<User> _repository)
+        private IGenericRepository<Product> repository = null;
+        public ProductController(IGenericRepository<Product> _repository)
         {
             this.repository = _repository;
         }
@@ -18,7 +18,7 @@ namespace GenericRepository.Controllers
         #region GetAll
         [HttpGet("GetAll")]
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             return repository.GetAll();
         }
@@ -26,7 +26,7 @@ namespace GenericRepository.Controllers
 
         #region Insert
         [HttpPost("Insert")]
-        public void AddEmployee(User model)
+        public void AddEmployee(Product model)
         {
             if (ModelState.IsValid)
             {
@@ -36,9 +36,5 @@ namespace GenericRepository.Controllers
             }
         }
         #endregion
-
     }
-    
-
-
 }
