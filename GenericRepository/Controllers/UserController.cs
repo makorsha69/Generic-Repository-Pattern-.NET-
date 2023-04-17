@@ -37,8 +37,46 @@ namespace GenericRepository.Controllers
         }
         #endregion
 
+        #region Update
+        [HttpPut("Update")]
+        public void UpdateProduct(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.Update(model);
+                repository.Save();
+
+            }
+        }
+        #endregion
+
+        #region Delete
+        [HttpDelete("Delete")]
+        public void DeleteProduct(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.Delete(id);
+                repository.Save();
+
+            }
+        }
+        #endregion
+
+        #region GetbyId
+
+        [HttpGet("GetById")]
+        public ActionResult<User> GetbyId(int id)
+        {
+            return repository.GetbyId(id);
+
+        }
     }
+
+    #endregion
+
+}
     
 
 
-}
+

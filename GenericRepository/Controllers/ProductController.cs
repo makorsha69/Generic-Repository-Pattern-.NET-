@@ -2,6 +2,7 @@
 using GenericRepository.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GenericRepository.Controllers
 {
@@ -26,7 +27,7 @@ namespace GenericRepository.Controllers
 
         #region Insert
         [HttpPost("Insert")]
-        public void AddEmployee(Product model)
+        public void AddProduct(Product model)
         {
             if (ModelState.IsValid)
             {
@@ -36,5 +37,43 @@ namespace GenericRepository.Controllers
             }
         }
         #endregion
+
+        #region Update
+        [HttpPut("Update")]
+        public void UpdateProduct(Product model)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.Update(model);
+                repository.Save();
+
+            }
+        }
+        #endregion
+
+        #region Delete
+        [HttpDelete("Delete")]
+        public void DeleteProduct(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.Delete(id);
+                repository.Save();
+
+            }
+        }
+        #endregion
+
+        #region GetbyId
+
+        [HttpGet("GetById")]
+        public ActionResult<Product> GetbyId(int id)
+        {
+           return repository.GetbyId(id);
+
+        }
     }
-}
+
+        #endregion
+    }
+

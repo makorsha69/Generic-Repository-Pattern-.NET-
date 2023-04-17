@@ -6,7 +6,7 @@
         T GetbyId(int id);
         void Insert(T obj);
         void Update(T obj);
-        void Delete(object id);
+        void Delete(int id);
         void Save();
     }
 }
